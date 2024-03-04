@@ -1,17 +1,19 @@
-import avengersImage from '../assets/images/avengers.jpg';
 import { Button } from './button';
 
-export function MovieCard() {
+export function MovieCard({ movie }) {
+  const handleClick = () => {
+    alert('Details of ' + movie.title);
+  };
   return (
-    <div className='bg-slate-600 text-slate-100 rounded-sm'>
+    <div className='bg-slate-600 text-slate-100 rounded-sm w-40'>
       <img
-        src={avengersImage}
-        alt='Avengers'
+        src={movie.imgSrc}
+        alt={movie.title}
         className='rounded-l-sm rounded-r-sm'
       />
       <div className='px-1 py-2'>
-        <h3>Avengers</h3>
-        <Button>View Details</Button>
+        <h3>{movie.title}</h3>
+        <Button onClick={handleClick}>View Details</Button>
       </div>
     </div>
   );
