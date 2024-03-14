@@ -3,12 +3,6 @@ import { Button } from './button';
 import { useState } from 'react';
 
 export function MovieCard({ movie }) {
-  // let isLiked = false;
-
-  // const state = useState(false);
-  // const isLiked = state[0];
-  // const setIsLiked = state[1];
-
   const [isLiked, setIsLiked] = useState(false);
 
   const handleViewDetailsClick = () => {
@@ -16,7 +10,6 @@ export function MovieCard({ movie }) {
   };
 
   const handleLikeClick = () => {
-    // isLiked = !isLiked;
     setIsLiked(!isLiked);
   };
 

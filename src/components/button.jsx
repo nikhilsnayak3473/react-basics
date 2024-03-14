@@ -1,7 +1,11 @@
-export function Button({ children, onClick }) {
+export function Button({ children, onClick, className }) {
   return (
     <button
-      className='px-1 py-0.5 bg-slate-800 text-slate-50 text-[8px] rounded-sm'
+      className={
+        className
+          ? `px-2 py-1 bg-slate-800 text-slate-50 rounded-sm ${className}`
+          : 'px-2 py-1 bg-slate-800 text-slate-50 rounded-sm'
+      }
       onClick={onClick}
     >
       {children}
