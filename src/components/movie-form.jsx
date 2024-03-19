@@ -4,9 +4,25 @@ import { Button } from './button';
 export function MovieForm() {
   const [movieName, setMovieName] = useState('');
   const [movieType, setMovieType] = useState('trending');
+  const [movieImage, setMovieImage] = useState('');
+  const [movieImageType, setMovieImageType] = useState('file');
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (movieImage) {
+      URL.revokeObjectURL(movieImage);
+    }
+    const fileUrl = URL.createObjectURL(file);
+    setMovieImage(fileUrl);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log({
+      movieName,
+      movieType,
+      movieImage,
+    });
   };
 
   return (
@@ -64,6 +80,67 @@ export function MovieForm() {
               <label htmlFor='highRanking'>High Ranking</label>
             </div>
           </div>
+        </div>
+        <div className='flex flex-col gap-2'>
+          <label htmlFor='movieImage'>Add Movie Image:</label>
+          <div className='flex gap-2'>
+            <div className='flex gap-1 items-center'>
+              <input
+                type='radio'
+                id='file'
+                name='movieImageType'
+                value='file'
+                required
+                checked={movieImageType === 'file'}
+                onChange={() => {
+                  if (movieImage) {
+                    URL.revokeObjectURL(movieImage);
+                  }
+                  setMovieImageType('file');
+                  setMovieImage('');
+                }}
+              />
+              <label htmlFor='file'>File</label>
+            </div>
+            <div className='flex gap-1 items-center'>
+              <input
+                type='radio'
+                id='url'
+                name='movieImageType'
+                value='url'
+                required
+                checked={movieImageType === 'url'}
+                onChange={() => {
+                  if (movieImage) {
+                    URL.revokeObjectURL(movieImage);
+                  }
+                  setMovieImageType('url');
+                  setMovieImage('');
+                }}
+              />
+              <label htmlFor='url'>Url</label>
+            </div>
+          </div>
+          {movieImageType === 'url' ? (
+            <input
+              type='text'
+              id='movieImage'
+              required
+              value={movieImage}
+              onChange={(e) => setMovieImage(e.target.value)}
+              className='text-zinc-800 w-80'
+              placeholder='Enter the url'
+            />
+          ) : (
+            <input
+              type='file'
+              accept='image/*'
+              id='movieImage'
+              required
+              onChange={handleImageUpload}
+              className='text-zinc-800 w-80'
+            />
+          )}
         </div>
         <Button>Add</Button>
       </form>

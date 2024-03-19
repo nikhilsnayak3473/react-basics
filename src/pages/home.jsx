@@ -1,5 +1,4 @@
 import { MoviesSection } from '../components/movies-section';
-import AvengersImage from '../assets/images/avengers.jpg';
 import { useState } from 'react';
 import { MovieForm } from '../components/movie-form';
 import { Modal } from '../components/modal';
