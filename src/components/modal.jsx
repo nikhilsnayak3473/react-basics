@@ -9,7 +9,7 @@ export function Modal({ children, modalTrigger }) {
     <>
       <Button onClick={() => setIsOpen(true)}>{modalTrigger}</Button>
       {isOpen ? (
-        <div className='absolute w-screen h-screen bg-slate-700/80 flex items-center justify-center z-50 inset-0'>
+        <div className='fixed w-screen h-screen bg-slate-700/80 flex items-center justify-center z-50 inset-0'>
           <div className='relative bg-slate-700 p-4 rounded-sm'>
             <Button
               onClick={() => setIsOpen(false)}

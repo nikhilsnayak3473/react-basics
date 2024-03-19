@@ -12,6 +12,8 @@ export function Home() {
 
   const [highRankingMovies, setHighRankingMovies] = useState([]);
 
+  const addMovie = () => {};
+
   return (
     <section>
       <div className='flex justify-between px-4'>
