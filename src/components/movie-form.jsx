@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from './button';
 
-export function MovieForm() {
+export function MovieForm({ onAddMovie }) {
   const [movieName, setMovieName] = useState('');
   const [movieType, setMovieType] = useState('trending');
   const [movieImage, setMovieImage] = useState('');
@@ -18,11 +18,16 @@ export function MovieForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
+    const movieDetails = {
       movieName,
       movieType,
       movieImage,
-    });
+    };
+    onAddMovie(movieDetails);
+    setMovieName('');
+    setMovieType('trending');
+    setMovieImage('');
+    setMovieImageType('file');
   };
 
   return (
@@ -37,7 +42,7 @@ export function MovieForm() {
             required
             value={movieName}
             onChange={(e) => setMovieName(e.target.value)}
-            className='text-zinc-800'
+            className='text-zinc-800 py-0.5 px-1 rounded-sm'
           />
         </div>
         <div className='flex flex-col gap-2'>
@@ -128,7 +133,7 @@ export function MovieForm() {
               required
               value={movieImage}
               onChange={(e) => setMovieImage(e.target.value)}
-              className='text-zinc-800 w-80'
+              className='text-zinc-800 py-0.5 px-1 rounded-sm w-80'
               placeholder='Enter the url'
             />
           ) : (
@@ -138,7 +143,7 @@ export function MovieForm() {
               id='movieImage'
               required
               onChange={handleImageUpload}
-              className='text-zinc-800 w-80'
+              className='text-zinc-800 rounded-sm w-80'
             />
           )}
         </div>

@@ -13,7 +13,7 @@ export function Modal({ children, modalTrigger }) {
           <div className='relative bg-slate-700 p-4 rounded-sm'>
             <Button
               onClick={() => setIsOpen(false)}
-              className='absolute right-0 translate-x-1/2 -translate-y-full rounded-full aspect-square p-1'
+              className='absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full aspect-square p-1'
             >
               <X size={12} />
             </Button>
